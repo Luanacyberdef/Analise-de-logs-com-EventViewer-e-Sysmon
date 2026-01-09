@@ -79,7 +79,14 @@ Nesta etapa, utilizei os logs do Sysmon para rastrear a origem do malware e iden
 ---
 
 ## ⚠️ Nota de Ética e Integridade:
+> [!IMPORTANT]
 **Preservação da Experiência de Aprendizado:** Para garantir que outros profissionais e estudantes tenham uma experiência autêntica de investigação, as respostas diretas e artefatos específicos foram parcialmente ofuscados `(ex: http://**********3/c****.exe)`. O foco desta documentação é a metodologia analítica e o raciocínio técnico.
+
+---
+
+## 🏛️ Créditos e Direitos Autorais:
+> [!IMPORTANT]
+Este projeto foi desenvolvido como parte dos estudos práticos na plataforma [TryHackMe](https://tryhackme.com/). Todos os direitos sobre os laboratórios, marcas e infraestrutura de treinamento pertencem à respectiva plataforma. A documentação presente neste repositório reflete minha metodologia analítica e resultados obtidos durante a resolução do desafio.
 
 ---
 
