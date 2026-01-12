@@ -77,13 +77,13 @@ Investigação via Sysmon para rastrear malware e comunicação externa:
 
 ---
 
-### ⚠️ Nota de Ética e Integridade:
+## ⚠️ Nota de Ética e Integridade:
 > [!WARNING]
 > **Preservação da Experiência de Aprendizado:** Artefatos e URLs foram parcialmente ofuscados para manter a integridade do aprendizado sem comprometer a segurança.
 
 ---
 
-### 🏛️ Créditos e Direitos Autorais:
+## 🏛️ Créditos e Direitos Autorais:
 > [!IMPORTANT]
 > **Nota:** Este projeto faz parte de estudos práticos na plataforma [TryHackMe](https://tryhackme.com/).
 > Todos os direitos sobre laboratórios, marcas e infraestrutura pertencem à respectiva plataforma.
