@@ -22,10 +22,16 @@
 
 <br>
 
-## 🖥️ Visão Geral do Dashboard:
+## 🖥️ Visão Geral do Ambiente:
 <img width="678" height="606" alt="image" src="https://github.com/user-attachments/assets/510e8972-a399-4154-b3ad-1f259fa2ab51" />
 
 > **Nota:** Visão simulada do ambiente Windows analisado
+
+<br>
+
+## ⚠️ Nota de Ética e Integridade:
+> [!WARNING]
+> **Preservação da Experiência de Aprendizado:** Alguns artefatos, identificadores e URLs foram parcialmente ofuscados com o objetivo de preservar a experiência de aprendizado de outros estudantes e profissionais, mantendo a integridade do material educacional.
 
 <br>
 
@@ -62,7 +68,7 @@ Após acesso via RDP, verificou-se criação de contas não autorizadas:
 ### 🚨 Análise de Artefatos e Comunicação C2
 Investigação via Sysmon para rastrear malware e comunicação externa:
 
-- **Vetor de Infecção:** `Pelo Navegador`; 
+- **Vetor de Infecção:** `Download via Navegador`; 
 - **Arquivo Malicioso:** `c****.exe`;
 - **URL de Origem:** `http://**********3/c****.exe`;
 - **Persistência:** Atalho na pasta Startup;
@@ -77,28 +83,19 @@ Investigação via Sysmon para rastrear malware e comunicação externa:
 
 ---
 
-## ⚠️ Nota de Ética e Integridade:
-> [!WARNING]
-> **Preservação da Experiência de Aprendizado:** Artefatos e URLs foram parcialmente ofuscados para manter a integridade do aprendizado sem comprometer a segurança.
-
----
-
 ## 🏛️ Créditos e Direitos Autorais:
-> [!IMPORTANT]
-> **Nota:** Este projeto faz parte de estudos práticos na plataforma [TryHackMe](https://tryhackme.com/).
-> Todos os direitos sobre laboratórios, marcas e infraestrutura pertencem à respectiva plataforma.
+> [!WARNING]
+> Este projeto faz parte de estudos práticos na plataforma [TryHackMe](https://tryhackme.com/). <br>
+> Todos os direitos sobre laboratórios, marcas e infraestrutura pertencem à respectiva plataforma. <br>
 > A documentação reflete a metodologia analítica e os resultados obtidos durante a resolução do desafio.
 
----
-
-## 📜 Licença
+## 📜 Licença:
 > [!IMPORTANT]
 > O conteúdo autoral deste repositório está licenciado sob a licença **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**. <br>
 > Veja: 👉 [LICENSE](./LICENSE.md)
 
----
-
-## 🤖 Uso de IA
+## 🤖 Uso de IA:
+> [!NOTE]
 > Parte deste conteúdo foi elaborada com apoio de ferramentas de IA, utilizadas como auxílio na organização e redação do texto, com revisão e validação integral pelo autor.
 
 ---
