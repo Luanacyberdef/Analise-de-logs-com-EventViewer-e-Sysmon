@@ -25,7 +25,7 @@
 ## 🖥️ Visão Geral do Dashboard:
 <img width="678" height="606" alt="image" src="https://github.com/user-attachments/assets/510e8972-a399-4154-b3ad-1f259fa2ab51" />
 
-> Visão simulada do ambiente Windows analisado
+> **Nota:** Visão simulada do ambiente Windows analisado
 
 <br>
 
@@ -38,7 +38,7 @@ Com base no log `Practice-Security.evtx`, foram identificadas tentativas massiva
 - **ID de Login RDP:** `(0x*****)` correlação de sessão;
 - **Hostname:** Dispositivo não autorizado (fora do padrão corporativo).
 
-**🏷 Recomendações:**  
+### 🏷 Recomendações:
 - Habilitar NLA (Network Level Authentication) para RDP;
 - Bloqueio de conta após 5 tentativas falhas;
 - Monitoramento de IPs suspeitos ou comportamento anômalo.
@@ -51,11 +51,11 @@ Após acesso via RDP, verificou-se criação de contas não autorizadas:
 - **Conta Criada:** `sv******`;
 - **Escalação de Privilégios:** Adicionada a 2 grupos administrativos;
 - **Correlação de Sessão:** ID de logon corresponde à sessão RDP maliciosa `(0x*****)`.
-
-**🏷 Recomendações:**  
-- Auditoria periódica de membros de grupos privilegiados;  
-- Alertas para qualquer criação de usuário (EID 4720);
-- Aplicar princípio do menor privilégio: criação restrita a contas monitoradas.
+ 
+> **🏷 Recomendações:**  
+> - Auditoria periódica de membros de grupos privilegiados;  
+> - Alertas para qualquer criação de usuário (EID 4720);  
+> - Aplicar princípio do menor privilégio: criação restrita a contas monitoradas.
 
 <br>
 
@@ -63,22 +63,22 @@ Após acesso via RDP, verificou-se criação de contas não autorizadas:
 Investigação via Sysmon para rastrear malware e comunicação externa:
 
 - **Vetor de Infecção:** `Pelo Navegador`; 
-- **Arquivo Malicioso:** `c****.exe`  
-- **URL de Origem:** `http://**********3/c****.exe`  
-- **Persistência:** Atalho na pasta Startup  
-- **Conexão C2:** IP `193.**.***.*` e domínio `******.click` (porta não convencional)
+- **Arquivo Malicioso:** `c****.exe`;
+- **URL de Origem:** `http://**********3/c****.exe`;
+- **Persistência:** Atalho na pasta Startup;
+- **Conexão C2:** IP `193.**.***.*` e domínio `******.click`.
 
 > **Nota:** O atacante usou uma porta não convencional para o C2.
 
-**🏷 Recomendações:**  
+### 🏷 Recomendações:
 - Bloquear IP e domínio em firewall/proxy;
 - Monitorar diretórios de Startup e chaves de registro Run/RunOnce; 
 - Filtrar URLs suspeitas ou recém-registradas.
 
 ---
 
-### ⚠️ Nota de Ética e Integridade
-> [!IMPORTANT]  
+### ⚠️ Nota de Ética e Integridade:
+> [!WARNING]
 > **Preservação da Experiência de Aprendizado:** Artefatos e URLs foram parcialmente ofuscados para manter a integridade do aprendizado sem comprometer a segurança.
 
 ---
