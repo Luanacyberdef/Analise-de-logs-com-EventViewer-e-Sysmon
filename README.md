@@ -91,6 +91,18 @@ Investigação via Sysmon para rastrear malware e comunicação externa:
 
 ---
 
+## 📜 Licença
+> [!IMPORTANT]
+> O conteúdo autoral deste repositório está licenciado sob a licença **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**. <br>
+> Veja: 👉 [LICENSE](./LICENSE.md)
+
+---
+
+## 🤖 Uso de IA
+> Parte deste conteúdo foi elaborada com apoio de ferramentas de IA, utilizadas como auxílio na organização e redação do texto, com revisão e validação integral pelo autor.
+
+---
+
 ## 🔗 Compartilhe com a comunidade 🧡
 
 Por favor, se esse conteúdo te ajudou, não esqueça de compartilhar 😁
