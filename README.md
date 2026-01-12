@@ -9,7 +9,7 @@
 ## 📑 Objetivos:
 - Identificar tentativas de intrusão via Força Bruta;
 - Analisar logs de acesso remoto (RDP) e movimentação lateral;
-- Rastrear persistência (Backdoors).
+- Rastrear persistência (Backdoors) e comunicação C2.
 
 <br>
 
@@ -17,72 +17,73 @@
 - Plataforma: TryHackMe.
 - Analista: [@Luanacyberdef](https://tryhackme.com/p/Luanacyberdef).
 - Ambiente: Visualizador de Eventos (Event Viewer) e Logs do Sysmon.
-- Metodologia: Detecção de intrusão e análise forense de artefatos de log.
+- Metodologia: Detecção de intrusão e análise de artefatos de log.
 - Sala no TryHackMe: [Logging do Windows para SOC](https://tryhackme.com/room/windowsloggingforsoc).
 
 <br>
 
+## 🖥️ Visão Geral do Dashboard:
+<img width="678" height="606" alt="image" src="https://github.com/user-attachments/assets/510e8972-a399-4154-b3ad-1f259fa2ab51" />
+
+> Visão simulada do ambiente Windows analisado
+
+<br>
+
 ## 🔍 Investigação Prática no Event Viewer:
-### 1. Detecção de Força Bruta RDP:
-Com base na análise do log `Practice-Security.evtx`, segui a trilha forense para isolar a atividade maliciosa:
+### 1. Detecção de Força Bruta RDP
+Com base no log `Practice-Security.evtx`, foram identificadas tentativas massivas de login:
 
-* **Identificação do IP de Origem:** Localizei o endereço IP externo responsável pelas tentativas massivas de conexão;
+- **IP de Origem:** Endereço externo responsável pelas tentativas;
+- **Usuário Alvo:** `A****` foco do ataque;
+- **ID de Login RDP:** `(0x*****)` correlação de sessão;
+- **Hostname:** Dispositivo não autorizado (fora do padrão corporativo).
 
-* **Usuário Alvo:** Identifiquei que o ataque focou na conta `A****`, confirmando a tentativa de quebra de privilégios elevados;
-
-* **ID de Login RDP:** Extraí o identificador único de sessão `(0x*****)` no evento de sucesso, permitindo correlacionar as ações do invasor;
-
-* **Análise de Hostname:** Verifiquei que o nome da estação de trabalho não seguia o padrão corporativo, um indicador clássico de dispositivo não autorizado na rede.
-
-### 🏷 Recomendação:
-- Habilitar NLA: Exigir Autenticação em Nível de Rede para forçar a validação antes da criação da sessão RDP;
-- Bloqueio de Conta: Implementar políticas de bloqueio após sucessivas falhas de login (ex: 5 tentativas);
-- Monitoramento de IPs: Bloquear automaticamente IPs de origem não esperados ou que apresentem comportamento anômalo de conexão.
+**🏷 Recomendações:**  
+- Habilitar NLA (Network Level Authentication) para RDP;
+- Bloqueio de conta após 5 tentativas falhas;
+- Monitoramento de IPs suspeitos ou comportamento anômalo.
 
 <br>
 
-### 2. Caça a Usuários Backdoor (Persistência):
-Após confirmar o acesso malicioso via RDP, o foco mudou para identificar como o atacante garantiu permanência no sistema através da criação de contas não autorizadas.
+### 2. Caça a Usuários Backdoor (Persistência)
+Após acesso via RDP, verificou-se criação de contas não autorizadas:
 
-* **Conta Criada:** Identifiquei que o atacante criou o usuário `sv******` imediatamente após o login RDP bem-sucedido;
+- **Conta Criada:** `sv******`;
+- **Escalação de Privilégios:** Adicionada a 2 grupos administrativos;
+- **Correlação de Sessão:** ID de logon corresponde à sessão RDP maliciosa `(0x*****)`.
 
-* **Escalação de Privilégios:** O usuário backdoor foi adicionado a 2 grupos, garantindo acesso remoto persistente e capacidade de manipulação de dados;
-
-* **Correlação de Sessão:** Confirmei que o campo ID de Logon da criação do usuário corresponde ao ID identificado na tarefa anterior `(0x*****)`, provando que a conta foi criada pelo invasor durante a mesma sessão maliciosa.
-
-### 🏷 Recomendação:
-- Revisão de Grupos Privilegiados: Auditoria periódica de membros nos grupos;
-- Alertas de Criação de Contas: Implementar alertas imediatos para qualquer ocorrência de EID 4720, especialmente se originada de contas de serviço ou usuários não pertencentes ao RH/TI;
-- Princípio do Menor Privilégio: Restringir a criação de usuários apenas a contas administrativas monitoradas.
+**🏷 Recomendações:**  
+- Auditoria periódica de membros de grupos privilegiados;  
+- Alertas para qualquer criação de usuário (EID 4720);
+- Aplicar princípio do menor privilégio: criação restrita a contas monitoradas.
 
 <br>
 
-### 3. Análise de Artefatos e Comunicação com Servidor de Comando e Controle:
-Nesta etapa, utilizei os logs do Sysmon para rastrear a origem do malware e identificar a comunicação externa com a infraestrutura do atacante.
+### 3. Análise de Artefatos e Comunicação C2
+Investigação via Sysmon para rastrear malware e comunicação externa:
 
-* **Vetor de Infecção:** Identifiquei que o usuário utilizou o navegador `GC` para acessar a internet;
-* **Download Malicioso:** Rastreio do arquivo executável `c****.exe` baixado no diretório de Downloads do usuário;
-* **Fonte da Ameaça:** O artefato foi recuperado da URL externa `http://**********3/c****.exe`;
-* **Mecanismo de Persistência:** O malware criou um arquivo de atalho na pasta Startup do Windows para garantir a execução automática a cada reinicialização do sistema;
-* **Comunicação Externa:** Detecção de conexão ativa com o servidor de Comando e Controle (C2) no endereço IP `193.**.***.*` na porta ****;
-* **Domínio de Destino:** O IP malicioso foi correlacionado ao domínio `******.click`.
+- **Vetor de Infecção:** `Pelo Navegador`; 
+- **Arquivo Malicioso:** `c****.exe`  
+- **URL de Origem:** `http://**********3/c****.exe`  
+- **Persistência:** Atalho na pasta Startup  
+- **Conexão C2:** IP `193.**.***.*` e domínio `******.click` (porta não convencional)
 
 > **Nota:** O atacante usou uma porta não convencional para o C2.
 
-### 🏷 Recomendação:
-- Bloqueio de IoCs: Adicionar o IP `193.**.***.*` e o domínio `******.click` à lista de bloqueio do Firewall e Proxy corporativo;
-- Varredura de Persistência: Implementar scripts de monitoramento para identificar novos arquivos em diretórios de Startup e chaves de registro Run/RunOnce;
-- Filtragem de URL: Bloquear o acesso a domínios recém-registrados ou com nomes aleatórios, como o identificado na investigação.
+**🏷 Recomendações:**  
+- Bloquear IP e domínio em firewall/proxy;
+- Monitorar diretórios de Startup e chaves de registro Run/RunOnce; 
+- Filtrar URLs suspeitas ou recém-registradas.
 
 ---
 
-## ⚠️ Nota de Ética e Integridade:
-> [!IMPORTANT]
-**Preservação da Experiência de Aprendizado:** Para garantir que outros profissionais e estudantes tenham uma experiência autêntica de investigação, as respostas diretas e artefatos específicos foram parcialmente ofuscados `(ex: http://**********3/c****.exe)`. O foco desta documentação é a metodologia analítica e o raciocínio técnico.
+### ⚠️ Nota de Ética e Integridade
+> [!IMPORTANT]  
+> **Preservação da Experiência de Aprendizado:** Artefatos e URLs foram parcialmente ofuscados para manter a integridade do aprendizado sem comprometer a segurança.
 
 ---
 
-## 🏛️ Créditos e Direitos Autorais:
+### 🏛️ Créditos e Direitos Autorais:
 > [!IMPORTANT]
 > **Nota:** Este projeto faz parte de estudos práticos na plataforma [TryHackMe](https://tryhackme.com/).
 > Todos os direitos sobre laboratórios, marcas e infraestrutura pertencem à respectiva plataforma.
