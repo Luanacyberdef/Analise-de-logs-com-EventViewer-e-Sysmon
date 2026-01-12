@@ -52,10 +52,10 @@ Após acesso via RDP, verificou-se criação de contas não autorizadas:
 - **Escalação de Privilégios:** Adicionada a 2 grupos administrativos;
 - **Correlação de Sessão:** ID de logon corresponde à sessão RDP maliciosa `(0x*****)`.
  
-> **🏷 Recomendações:**  
-> - Auditoria periódica de membros de grupos privilegiados;  
-> - Alertas para qualquer criação de usuário (EID 4720);  
-> - Aplicar princípio do menor privilégio: criação restrita a contas monitoradas.
+### 🏷 Recomendações: 
+- Auditoria periódica de membros de grupos privilegiados;  
+- Alertas para qualquer criação de usuário (EID 4720);  
+- Aplicar princípio do menor privilégio: criação restrita a contas monitoradas.
 
 <br>
 
