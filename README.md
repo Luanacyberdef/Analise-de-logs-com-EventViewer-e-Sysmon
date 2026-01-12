@@ -1,9 +1,7 @@
 <div align="center">
-  <p align="center">
     <img alt="Tryhackme" src="https://repository-images.githubusercontent.com/518509014/f7450454-158c-45e0-8b38-0c0ae4d7394c" width="300px" />
     <h1> 🖥 Logging do Windows para SOC</h1>
     Este projeto detalha a metodologia utilizada para identificar um ataque de força bruta por protocolo RDP em ambiente Windows, utilizando logs de segurança.
-  </p>
 </div>
 
 <br>
@@ -86,7 +84,9 @@ Nesta etapa, utilizei os logs do Sysmon para rastrear a origem do malware e iden
 
 ## 🏛️ Créditos e Direitos Autorais:
 > [!IMPORTANT]
-Este projeto foi desenvolvido como parte dos estudos práticos na plataforma [TryHackMe](https://tryhackme.com/). Todos os direitos sobre os laboratórios, marcas e infraestrutura de treinamento pertencem à respectiva plataforma. A documentação presente neste repositório reflete minha metodologia analítica e resultados obtidos durante a resolução do desafio.
+> **Nota:** Este projeto faz parte de estudos práticos na plataforma [TryHackMe](https://tryhackme.com/).
+> Todos os direitos sobre laboratórios, marcas e infraestrutura pertencem à respectiva plataforma.
+> A documentação reflete a metodologia analítica e os resultados obtidos durante a resolução do desafio.
 
 ---
 
