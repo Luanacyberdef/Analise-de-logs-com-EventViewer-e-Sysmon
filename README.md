@@ -77,8 +77,8 @@ Investigação via Sysmon para rastrear malware e comunicação externa:
 > **Nota:** O atacante usou uma porta não convencional para o C2.
 
 ### Recomendações:
-- Bloquear IP e domínio em firewall/proxy;
-- Monitorar diretórios de Startup e chaves de registro Run/RunOnce; 
+- Bloquear IP e domínio no firewall;
+- Monitorar diretórios de Startup e chaves de registro; 
 - Filtrar URLs suspeitas ou recém-registradas.
 
 ---
@@ -96,7 +96,7 @@ Investigação via Sysmon para rastrear malware e comunicação externa:
 
 ## 🤖 Uso de IA:
 > [!NOTE]
-> Parte deste conteúdo foi elaborada com apoio de ferramentas de IA, utilizadas como auxílio na organização e redação do texto, com revisão e validação integral pelo autor.
+> Parte deste conteúdo foi elaborada com apoio de ferramentas de IA, utilizadas como auxílio na organização, com revisão e validação integral pelo autor.
 
 ---
 
