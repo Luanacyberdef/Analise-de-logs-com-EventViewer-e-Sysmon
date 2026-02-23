@@ -91,7 +91,7 @@ Investigação via Sysmon para rastrear malware e comunicação externa:
 
 ## 🤖 Uso de IA:
 > [!NOTE]
-> Parte deste conteúdo foi elaborada com apoio de ferramenta de IA, utilizadas como auxílio na organização do texto, com revisão e validação integral pelo autor.
+> Parte deste conteúdo foi elaborada com apoio de ferramenta de IA, utilizada como auxílio na organização do texto, com revisão e validação integral pelo autor.
 
 ---
 
